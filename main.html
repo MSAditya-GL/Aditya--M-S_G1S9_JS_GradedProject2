@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Page</title>
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="app_wrap">
+        <header>
+            <div class="search">
+                <div class="prev">
+                    <button id="prev_btn" title="previous">Previous</button>
+                </div>
+
+                <input type="text" id="input" placeholder="search for keyword to filter the resume"
+                    autocomplete="off" />
+
+                <div class="next">
+                    <button id="next_btn" title="next">Next</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="main">
+                <section class="header">
+                    <div class="intro">
+                        <h2>Name</h2>
+                        <br>
+                        <h3>Applied for: JD</h3>
+                    </div>
+                    <div class="pro_img">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                </section>
+                <aside class="info">
+                    <section>
+                        <div class="heading">Personal Information</div>
+                        <div class="value">
+                            <ul id="personal">
+                                <li>9999999999</li>
+                                <li>john@gmail.com</li>
+                                <li><a href="#">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="heading">Technical Skills</div>
+                        <div class="value">
+                            <ul id="skill">
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JavaScript</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="heading">Hobbies</div>
+                        <div class="value">
+                            <ul id="hobbies">
+                                <li>Wildlife</li>
+                                <li>Dance</li>
+                                <li>Workout</li>
+                            </ul>
+                        </div>
+                    </section>
+                </aside>
+                <section class="content">
+                    <h2>Work Experience in previous company</h2>
+                    <div class="company-details">
+                        <div class="company-name-div">
+                            <p class="company-name-header" id="company-name-p">
+                                <span class="company-name-span" id="company-name-span">Company Name: </span>
+                            </p>
+                        </div>
+                        <div class="position-div">
+                            <p class="position-header" id="position-p">
+                                <span class="position-span" id="position-span">Position: </span>
+                            </p>
+                        </div>
+                        <div class="start-date-div">
+                            <p class="start-date-header" id="start-date-p">
+                                <span class="start-date-span" id="start-date-span">Start Date:</span>
+                            </p>
+                        </div>
+                        <div class="end-date-div">
+                            <p class="end-date-header" id="end-date-p">
+                                <span class="end-date-span" id="end-date-span">End Date:</span>
+                            </p>
+                        </div>
+                        <div class="summary-div">
+                            <p class="summary-header" id="summary-p">
+                                <span class="summary-span" id="summary-span">Summary:</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="projects" id="projects-div">
+                        <h2>Projects</h2>
+                        <div class="project-details">
+                            <p class="project-p" id="project-p">
+                                <span id="project-span"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="education" id="education-div">
+                        <h2>Education</h2>
+                        <div class="education-details">
+                            <ul class="education-details-ul">
+                                <li class="ug-details">
+                                    <p class="ug-heading" id="ug-p">
+                                        <span class="education-span">UG:</span>
+                                    </p>
+                                </li>
+                                <li class="pu-details">
+                                    <p class="pu-heading" id="pu-p">
+                                        <span class="education-span">PU:</span>
+                                    </p>
+                                </li>
+                                <li class="high-school-details">
+                                    <p class="hs-heading" id="hs-p">
+                                        <span class="education-span">High School:</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="internship" id="internship-div">
+                        <h2>Internship</h2>
+                        <div class="internship-details-div">
+                            <ul class="internship-details-ul">
+                                <li class="company-name-li">
+                                    <p class="company-name-header" id="int-company-name-p">
+                                        <span class="company-name-span" id="int-company-name-span">Company Name:</span>
+                                    </p>
+                                </li>
+                                <li class="position-li">
+                                    <p class="position-header" id="int-position-p">
+                                        <span class="position-span" id="int-position-span">Position:</span>
+                                    </p>
+                                </li>
+                                <li class="start-date-li">
+                                    <p class="start-date-header" id="int-start-date-p">
+                                        <span class="start-date-span" id="int-start-date-span">Start Date:</span>
+                                    </p>
+                                </li>
+                                <li class="end-date-li">
+                                    <p class="end-date-header" id="int-end-date-p">
+                                        <span class="end-date-span" id="int-end-date-span">End Date:</span>
+                                    </p>
+                                </li>
+                                <li class="summary-li">
+                                    <p class="summary-header" id="int-summary-p">
+                                        <span class="summary-span" id="int-summary-span">Summary:</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Achievements">
+                        <h2>Achievements</h2>
+                        <div id="achievements">
+                            <ul class="achievements" id="achievements"></ul>
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+    </div>
+    </main>
+    <script src="javascript/Data.js"></script>
+    <script src="javascript/main.js"></script>
+</body>
+
+</html>

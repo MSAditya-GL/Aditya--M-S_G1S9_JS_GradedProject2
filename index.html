@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <style>
+        a {
+            text-decoration: none;
+            font-size: large;
+            color: black;
+            font-weight: bold;
+            font-family: sans-serif;
+            padding: 10px;
+            margin: 50px 0px;
+        }
+
+        a:hover {
+            background-color: rgba(0, 0, 255, 0.3);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="main.html" class="app_wrap">
+            <input type="text" class="user_name" placeholder="User Name" autocomplete="off" required>
+            <br>
+            <input type="password" class="password" placeholder="Password" required>
+            <br>
+            <button id="login" type="submit">Login</button>
+            <div class="button">
+                don't have an Account: <a href="signUp.html">Create Account</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="javascript/login-main.js"></script>
+
+</body>
+
+</html>
