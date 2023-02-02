@@ -1,49 +1,52 @@
+//prevent back page loading
+function preventBack() {
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, "", window.location.href);
+    }
+};
+setTimeout("preventBack()", 0);
+
+let loader = document.querySelector('.loader');
+
+//Declare Global Variable
 let current_Index = 0;
 let resume = applicantData.resume;
 let d = resume[current_Index];
 
-let main = document.querySelector(".main");
+
+//Declare DOM Object
+
 let next_btn = document.querySelector("#next_btn");
 let prev_btn = document.querySelector("#prev_btn");
 
-prev_btn.style.display = "none";
-
-function nextApplication() {
-    ++current_Index;
-   
-    if (current_Index >= resume.length) {
-        next_btn.style.display = "none";
-    } else {
-        next_btn.style.display = "block";
-        prev_btn.style.display = "block";
-        d = resume[current_Index];
-        loadData();
-    }
-
-}
-
-function prevApplication() {
-    --current_Index;
-
-    if (current_Index < 0) {
-        prev_btn.style.display = "none";
-
-    } else {
-        prev_btn.style.display = "block";
-        next_btn.style.display = "block";
-        d = resume[current_Index];
-        loadData();
-    }
-}
-
-next_btn.addEventListener("click", nextApplication);
-prev_btn.addEventListener("click", prevApplication);
+let searchNotFound = document.querySelector(".searchNotFound");
+let searchFound = document.querySelector(".searchFound");
 
 let header = document.querySelector('.intro');
 let personalInfo = document.querySelector('#personal');
 let skill = document.querySelector('#skill');
 let hobbies = document.querySelector('#hobbies');
+let company_details = document.querySelector('.company_details')
+let projects = document.querySelector('.projects');
+let education = document.querySelector('.education');
+let intern = document.querySelector('.intern');
 let achievements = document.querySelector('.achievements');
+
+const btnDisplay = () => {
+
+    if (current_Index + 1 >= resume.length) {
+        next_btn.style.display = "none";
+    } else {
+        next_btn.style.display = "block";
+    }
+    if (current_Index === 0) {
+        prev_btn.style.display = "none";
+    } else {
+        prev_btn.style.display = "block";
+
+    }
+}
 
 function loadData() {
     header.innerHTML = `<h2>${d.basics.name}</h1>
@@ -56,66 +59,99 @@ function loadData() {
 
     loadSkills(d.skills.keywords);
     loadHobbies(d.interests.hobbies);
-    loadAchievements(d.achievements.Summary);
-
+    company_details.innerHTML = `<div>${Object.keys(
+        d["work"]
+    ).map(
+        (key) =>
+            `<p class="innerDetail"><b>${key}</b>: ${d["work"][key]}</p>`
+    )}</div>`.replaceAll(",", "");
+    projects.innerHTML = `<p class="details"><b>${d["projects"]["name"]}</b>:${d["projects"]["description"]}</p>`;
+    education.innerHTML = `<ul>${Object.keys(d["education"])
+        .map((education) =>
+            `<li><b>${education}:</b> ${Object.keys(
+                d["education"][education]
+            ).map((Key) =>
+                `<span> ${d["education"][education][Key]}</span>`
+            )}</li>`
+        )}</ul>`.replaceAll(",", "");
+    intern.innerHTML = `<ul>${Object.keys(d["Internship"])
+        .map((key) =>
+            `<li><b>${key}</b>: ${d["Internship"][key]}</li>`
+        )}</ul>`.replaceAll(",", "");
+    achievements.innerHTML = `<ul>${d["achievements"]["Summary"]
+        .map((achievements) => `<li>${achievements}</li>`)}</ul>`.replaceAll(",", "");
 }
 
 function loadSkills(key) {
-    let str = "";
+    let string = "";
     for (const skill of key) {
-        str += `<li class='technical-skills-li'>${skill}</li>`;
+        string += `<li id='skill'>${skill}</li>`;
     }
-    skill.innerHTML = str;
+    skill.innerHTML = string;
 }
 
 function loadHobbies(key) {
-    let str = "";
+    let string = "";
     for (const hobby of key) {
-        str += `<li class='hobbies-li'>${hobby}</li>`;
+        string += `<li id='hobbies'>${hobby}</li>`;
     }
-    hobbies.innerHTML = str;
+    hobbies.innerHTML = string;
 }
 
-function loadAchievements(key) {
-    let str = "";
-    for (const achievements of key) {
-        str += `<li class='ach-li'>${achievements}</li>`;
+const searchResult = () => {
+    if (resume.length > 0) {
+        searchNotFound.style.display = "none";
+        searchFound.style.display = "block";
+    } else {
+        searchNotFound.style.display = "flex";
+        searchFound.style.display = "none"
     }
-    achievements.innerHTML = str;
 }
 
-loadData();
+
+function nextApplication() {
+    ++current_Index;
+    d = resume[current_Index];
+    loadData();
+    btnDisplay();
+}
+
+function prevApplication() {
+    --current_Index;
+    d = resume[current_Index];
+    loadData();
+    btnDisplay();
+}
+
+
+
+next_btn.addEventListener("click", nextApplication);
+prev_btn.addEventListener("click", prevApplication);
+
+
 
 let input = document.querySelector('#input')
-
-input.addEventListener('keypress', setQuery);
-
-function setQuery(event) {
-    if (event.keyCode == 13) {
-        result(input.value)
-    }
-
-}
-
-function result(input) {
-    prev_btn.style.display = "none";
-    next_btn.style.display = "none";
-
-    let checkValue = e.target.value;
-    resumeData = [];
-    for (const resume of applicantDatadata.resume) {
-        if (resume.basics.AppliedFor.toLowerCase() === searchedValue.toLowerCase())
-            resumeData.push(resume);
-    }
+input.oninput = (e) => {
     current_Index = 0;
-    if (resumeData.length != 0) {
-        error.style.display = "none";
-        resumeDiv.style.display = "flex";
-        if (resumeData.length > 1) nextButton.disabled = false;
-        d = resumeData[current_Index];
-        loadData();
+    let checkInput = e.target.value;
+
+    if (checkInput.length > 0) {
+        resume = applicantData["resume"].filter((details) => details["basics"]["AppliedFor"]
+            .toLowerCase()
+            .includes(checkInput.toLowerCase()));
     } else {
-        error.style.display = "block";
-        main.innerHTML = '';
+        resume = applicantData["resume"];
     }
+    
+    if (resume.length > 0) {
+        d = resume[current_Index];
+        loadData();
+    }
+    searchResult();
+    btnDisplay();
+    
 }
+
+searchResult();
+loadData();
+btnDisplay();

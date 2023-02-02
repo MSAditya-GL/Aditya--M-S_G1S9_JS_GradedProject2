@@ -473,4 +473,3 @@ const data = `{
 }`
 
 let applicantData =JSON.parse(data);
-console.log(applicantData)
