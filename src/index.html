@@ -22,19 +22,25 @@
             background-color: rgba(0, 0, 255, 0.3);
             border-radius: 5px;
         }
+
+        h1 {
+            font-size: 50px;
+        }
     </style>
 </head>
 
 <body>
     <div>
-        <form action="main.html" class="app_wrap">
+        <form action="html/main.html" class="app_wrap">
+            <h1>Sign in</h1>
+            <br>
             <input type="text" class="user_name" placeholder="User Name" autocomplete="off" required>
             <br>
             <input type="password" class="password" placeholder="Password" required>
             <br>
             <button id="login" type="submit">Login</button>
             <div class="button">
-                don't have an Account: <a href="signUp.html">Create Account</a>
+                don't have an Account: <a href="html/signUp.html">Create Account</a>
             </div>
         </form>
     </div>

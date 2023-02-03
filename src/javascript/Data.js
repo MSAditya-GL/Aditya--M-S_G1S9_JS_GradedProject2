@@ -1,4 +1,3 @@
-
 const data = `{
 	"resume": [
 		{
@@ -472,4 +471,4 @@ const data = `{
 
 }`
 
-let applicantData =JSON.parse(data);
+let applicantData = JSON.parse(data);
